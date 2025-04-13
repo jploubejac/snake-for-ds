@@ -1,0 +1,10 @@
+
+# Ignore .elf files and .nds files
+*.elf
+*.nds
+
+# Ignore build directory
+build/*
+
+# Ignore vscode workspace files
+.vscode/
