@@ -2,6 +2,7 @@
 # Ignore .elf files and .nds files
 *.elf
 *.nds
+*.lst
 
 # Ignore build directory
 build/*
