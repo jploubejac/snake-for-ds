@@ -15,19 +15,19 @@ void Snake::move(){
 
     switch (this->directions[0]) {
         case SNAKE_UP:
-            if(this->positions[0]==SNAKE_POS_MIN_Y)this->positions[0].y=SNAKE_POS_MAX_Y;
+            if(this->positions[0].y==SNAKE_POS_MIN_Y)this->positions[0].y=SNAKE_POS_MAX_Y;
             else this->positions[0].y--;
             break;
         case SNAKE_DOWN:
-            if(this->positions[0]==SNAKE_POS_MAX_Y)this->positions[0].y=SNAKE_POS_MIN_Y;
+            if(this->positions[0].y==SNAKE_POS_MAX_Y)this->positions[0].y=SNAKE_POS_MIN_Y;
             else this->positions[0].y++;
             break;
         case SNAKE_LEFT:
-            if(this->positions[0]==SNAKE_POS_MIN_X)this->positions[0].x=SNAKE_POS_MAX_X;
+            if(this->positions[0].x==SNAKE_POS_MIN_X)this->positions[0].x=SNAKE_POS_MAX_X;
             else this->positions[0].x--;
             break;
         case SNAKE_RIGHT:
-            if(this->positions[0]==SNAKE_POS_MAX_X)this->positions[0].x=SNAKE_POS_MIN_X;
+            if(this->positions[0].x==SNAKE_POS_MAX_X)this->positions[0].x=SNAKE_POS_MIN_X;
             else this->positions[0].x++;
             break;
     }
