@@ -16,8 +16,8 @@ include $(DEVKITARM)/ds_rules
 #---------------------------------------------------------------------------------
 TARGET		:=	$(shell basename $(CURDIR))
 BUILD		:=	build
-SOURCES		:=	gfx source data
-INCLUDES	:=	include build
+SOURCES		:=	gfx data source/Snake source/Scene source/Main 
+INCLUDES	:=	include include/Snake include/Scene include/Main include/DynamicArray
 
 #---------------------------------------------------------------------------------
 # options for code generation
@@ -57,9 +57,9 @@ export OUTPUT	:=	$(CURDIR)/$(TARGET)
 export VPATH	:=	$(foreach dir,$(SOURCES),$(CURDIR)/$(dir))
 export DEPSDIR	:=	$(CURDIR)/$(BUILD)
 
-CFILES		:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.c)))
-CPPFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.cpp)))
-SFILES		:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.s)))
+CFILES    := $(foreach dir,$(SOURCES),$(wildcard $(dir)/*.c))
+CPPFILES  := $(foreach dir,$(SOURCES),$(wildcard $(dir)/*.cpp))
+SFILES    := $(foreach dir,$(SOURCES),$(wildcard $(dir)/*.s))
 BINFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.bin)))
 
 #---------------------------------------------------------------------------------
@@ -76,8 +76,10 @@ else
 endif
 #---------------------------------------------------------------------------------
 
-export OFILES	:=	$(BINFILES:.bin=.o) \
+export OFILES := $(BINFILES:.bin=.o) \
 					$(CPPFILES:.cpp=.o) $(CFILES:.c=.o) $(SFILES:.s=.o)
+
+OFILES := $(notdir $(OFILES))
 
 export INCLUDE	:=	$(foreach dir,$(INCLUDES),-I$(CURDIR)/$(dir)) \
 					$(foreach dir,$(LIBDIRS),-I$(dir)/include) \
