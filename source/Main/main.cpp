@@ -1,8 +1,9 @@
 #include <nds.h>
-#include "HelloApp.hpp"
+#include <iostream>
+#include "App.hpp"
 
 int main(void){
-    HelloApp app;
+    App app;
     app.run();
     return 0;
 }
