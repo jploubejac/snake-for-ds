@@ -1,10 +1,7 @@
 #include "Snake.hpp"
 
 Snake::Snake(){
-    this->size=1;
-    this->directions[0]=SNAKE_UP;
-    this->positions[0]=SnakePosition((SNAKE_POS_MIN_X+SNAKE_POS_MAX_X)/2,(SNAKE_POS_MIN_Y+SNAKE_POS_MAX_Y)/2);
-    while(this->size<SNAKE_INIT_LENGTH)this->SnakeGrowUp();
+    this->reset();
 }
 
 void Snake::move(){
@@ -36,7 +33,7 @@ void Snake::move(){
 void Snake::changeDirection(SnakeDirection newDirection){
     if (this->size == 0) return; 
 
-    SnakeDirection oppositeDirection;
+    SnakeDirection oppositeDirection= SNAKE_UP;
     switch (this->directions[0]) {
         case SNAKE_UP:
             oppositeDirection = SNAKE_DOWN;
@@ -117,4 +114,19 @@ int Snake::SnakeIsOnCell(SnakePosition cell){
         }
     }
     return 0; 
+}
+
+Snake::SnakeDirection Snake::getHeadDirection(){
+    return this->directions[0];
+}
+
+Snake::SnakeDirection Snake::getTailDirection(){
+    return this->directions[this->size - 1];
+}
+
+void Snake::reset(){
+    this->size=1;
+    this->directions[0]=SNAKE_UP;
+    this->positions[0]=SnakePosition((SNAKE_POS_MIN_X+SNAKE_POS_MAX_X)/2,(SNAKE_POS_MIN_Y+SNAKE_POS_MAX_Y)/2);
+    while(this->size<SNAKE_INIT_LENGTH)this->SnakeGrowUp();
 }

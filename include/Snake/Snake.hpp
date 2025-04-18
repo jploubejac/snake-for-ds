@@ -35,6 +35,9 @@ class Snake {
         const SnakePosition *getPositions() const;
         int SnakeIsBiteHimself();
         int SnakeIsOnCell(SnakePosition cell);
+        SnakeDirection getHeadDirection();
+        SnakeDirection getTailDirection();
+        void reset();
 };
 
 #endif
