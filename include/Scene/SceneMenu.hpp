@@ -6,10 +6,10 @@ class App; // Forward declaration
 
 class SceneMenu : public Scene{
     private:
-        App* app;
+        App *pApp;
         bool areChanged;
     public:
-        SceneMenu(App* app);
+        SceneMenu(App *pApp);
         void draw() override;
         void update() override;
 };

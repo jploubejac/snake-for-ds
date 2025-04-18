@@ -1,9 +1,10 @@
 #include <nds.h>
 #include <stdio.h>
 #include "SceneMenu.hpp"
+#include "App.hpp"
 
-SceneMenu::SceneMenu(App* app){
-    this->app = app;
+SceneMenu::SceneMenu(App* pApp){
+    this->pApp = pApp;
     this->areChanged = false;
     iprintf("=== Menu ===\n");
     iprintf("Bienvenue dans le snake ds\n");
@@ -11,15 +12,12 @@ SceneMenu::SceneMenu(App* app){
 }
 
 void SceneMenu::draw() {
-    if (this->areChanged) {
-        iprintf("Bouton Start appuyé\n");
-        this->areChanged = false;
-    }
+
 }
 
 void SceneMenu::update() {
     if(keysDown() & KEY_START) {
         this->areChanged = true;
-        //this->app->changeScene(App::AppScene::GAME);
+        this->pApp->changeScene(App::AppScene::APP_SCENE_GAME);
     }
 }
