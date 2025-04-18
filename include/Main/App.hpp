@@ -3,6 +3,7 @@
 
 #include "Scene.hpp"
 #include "SceneMenu.hpp"
+#include "SceneGame.hpp"
 
 class App{
     public:
@@ -13,10 +14,12 @@ class App{
         };
     private:
         SceneMenu *pSceneMenu;
+        SceneGame *pSceneGame;
         Scene *currentScene;
         
     public:
         App();
+        void init();
         void run();
         void changeScene(AppScene newScene);
 
